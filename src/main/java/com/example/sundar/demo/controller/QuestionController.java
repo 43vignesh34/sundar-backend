@@ -1,12 +1,13 @@
-package com.example.sundar.demo.controller;
-
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,5 +27,20 @@ public class QuestionController {
     @GetMapping("/questions/")
     public List<Question> questions() {
         return questionService.getQuestions();
+    }
+
+    @PostMapping("/question/")
+    public Question question(@RequestBody String text) {
+        return questionService.postQuestion(text);
+    }
+
+    @DeleteMapping("/question/{id}")
+    public void deleteQuestion(@PathVariable int id) {
+        questionService.deleteQuestion(id);
+    }
+
+    @PutMapping("/question/{id}")
+    public Question putQuestion(@PathVariable int id, @RequestBody String text) {
+        return questionService.putQuestion(id, text);
     }
 }

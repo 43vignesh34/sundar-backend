@@ -18,7 +18,7 @@ public class Question {
     private int id;
     private String text;
 
-    public Question(String text, String description) {
+    public Question(String text) {
         this.text = text;
     }
 
