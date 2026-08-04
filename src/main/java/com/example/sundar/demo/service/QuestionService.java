@@ -21,8 +21,8 @@ public class QuestionService {
         return questionRepository.findAll();
     }
 
-    public Question postQuestion(String text) {
-        return questionRepository.save(new Question(text));
+    public Question postQuestion(Question text) {
+        return questionRepository.save(text);
     }
 
     public void deleteQuestion(int id) {
