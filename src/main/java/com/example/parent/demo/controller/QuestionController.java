@@ -1,4 +1,4 @@
-package com.example.sundar.demo.controller;
+package com.example.parent.demo.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.sundar.demo.entity.Question;
-import com.example.sundar.demo.service.QuestionService;
+import com.example.parent.demo.entity.Question;
+import com.example.parent.demo.service.QuestionService;
 
 @CrossOrigin("http://localhost:5173")
 @RestController
@@ -32,9 +32,9 @@ public class QuestionController {
         return questionService.getQuestions();
     }
 
-    @PostMapping("/question")
-    public Question question(@RequestBody Question question) {
-        return questionService.postQuestion(question);
+    @PostMapping("/question/")
+    public Question question(@RequestBody Question text) {
+        return questionService.postQuestion(text);
     }
 
     @DeleteMapping("/question/{id}")
@@ -43,7 +43,7 @@ public class QuestionController {
     }
 
     @PutMapping("/question/{id}")
-    public Question putQuestion(@PathVariable int id, @RequestBody Question question) {
-        return questionService.putQuestion(id, question.getText());
+    public Question putQuestion(@PathVariable int id, @RequestBody String text) {
+        return questionService.putQuestion(id, text);
     }
 }

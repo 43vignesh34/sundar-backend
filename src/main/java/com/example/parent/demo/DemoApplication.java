@@ -1,4 +1,4 @@
-package com.example.sundar.demo;
+package com.example.parent.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
