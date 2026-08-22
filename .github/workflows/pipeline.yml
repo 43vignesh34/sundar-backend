@@ -1,27 +1,24 @@
-name: BackEnd pipeline
+name: BackEnd Workflow
 
-on: 
+on:
     push
 
 jobs:
     build:
         runs-on: ubuntu-latest
-        steps:
-            -uses: actions/checkout@v4
-            -uses: actions/setup-java@v4
-            with:
-                java-version: '17'
-                distribution: 'temurin'
-            -run: mvn clean package
-            -uses: actions/upload-artifact@v4
-            with:
-                name: backend-jar
-                path: ./target/demo-0.0.1-SNAPSHOT.jar
-
-
     
-    deploy:
-        needs: build
-        runs-on: ubuntu-latest
         steps:
-            -uses
+            - name: Checkout Code
+              uses: actions/checkout@v4
+            - name: Setup Java
+              uses: actions/setup-java@v4
+              with:
+                distribution: 'temurin'
+                java-version: '17'
+                cache: 'maven'
+            - name: Build application
+              run: mvn package
+            - name: Build Container
+              run: docker build -t image .
+            - name: Run Container
+              run: docker run -p 8081:8080 image
