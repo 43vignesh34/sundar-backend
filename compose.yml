@@ -2,16 +2,16 @@ services:
   postgres:
     image: postgres:16
     environment:
-      - POSTGRES_DB = demo
-      - POSTGRES_USER = postgres
-      - POSTGRES_PASSWORD = postgres
+      - POSTGRES_DB=demo
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
 
   backend:
     build: .
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/demo
-      - SPRING_DATASOURCE_USERNAME = postgres
-      - SPRING_DATASOURCE_PASSWORD = postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
 
     ports:
       - "8081:8080"
@@ -19,7 +19,7 @@ services:
     depends_on:
       - postgres
     volumes:
-      - my_first_volume: /volume
+      - my_first_volume:/volume
 
 volumes:
-  - my_first_volume:
+  my_first_volume:
