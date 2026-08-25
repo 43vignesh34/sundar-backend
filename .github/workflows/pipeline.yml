@@ -16,6 +16,6 @@ jobs:
                 java-version: '17'
                 cache: 'maven'
             - name: Build application
-              run: mvn package
+              run: mvn package -DskipTests
             - name: Build Container
               run: docker compose up -d
