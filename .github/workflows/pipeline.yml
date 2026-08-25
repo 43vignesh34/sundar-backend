@@ -19,5 +19,3 @@ jobs:
               run: mvn package
             - name: Build Container
               run: docker build -t image .
-            - name: Run Container
-              run: docker run -p 8081:8080 image
