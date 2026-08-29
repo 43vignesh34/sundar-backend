@@ -18,4 +18,4 @@ jobs:
             - name: Build application
               run: mvn clean package -DskipTests #Skipping the Smoke Test
             - name: Build Container
-              run: docker compose up -d
+              run: docker compose up --build -d
