@@ -16,6 +16,6 @@ jobs:
                 java-version: '17'
                 cache: 'maven'
             - name: Build application
-              run: mvn package -DskipTests
+              run: mvn clean package -DskipTests #Skipping the Smoke Test
             - name: Build Container
               run: docker compose up -d
