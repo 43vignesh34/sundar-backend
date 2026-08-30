@@ -7,7 +7,7 @@ services:
       - POSTGRES_PASSWORD=postgres
 
   backend:
-    build: .
+    build: 43vignesh34/sundar-backend:latest
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/demo
       - SPRING_DATASOURCE_USERNAME=postgres
