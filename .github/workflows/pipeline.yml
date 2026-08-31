@@ -19,6 +19,9 @@ jobs:
               run: mvn clean package -DskipTests #Skipping the Smoke Test
             - name: Docker Hub Login
               uses: docker/login-action@v3
+              with:
+                username: ${{secrets.EC2_USERNAME}}
+                password: ${{secrets.EC2_ACCESSTOKEN}}
             - name: Build Docker Compose image
               run: docker build -t ${{secrets.DOCKERHUB_USERNAME}}/sundar-backend:latest
             - name: Push to Docker Hub
