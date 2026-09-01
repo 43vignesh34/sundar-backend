@@ -1,6 +1,7 @@
 services:
   postgres:
     image: postgres:16
+    restart: unless-stopped
     environment:
       - POSTGRES_DB=demo
       - POSTGRES_USER=postgres
@@ -8,6 +9,7 @@ services:
 
   backend:
     build: 43vignesh34/sundar-backend:latest
+    restart: unless-stopped
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/demo
       - SPRING_DATASOURCE_USERNAME=postgres
