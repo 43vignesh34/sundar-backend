@@ -18,38 +18,32 @@ import com.example.parent.demo.service.QuestionService;
 
 @CrossOrigin("http://localhost:5173")
 @RestController
-public class QuestionController 
-{
+public class QuestionController {
     @Autowired
     QuestionService questionService;
 
     @GetMapping("/question/{id}")
-    public Optional<Question> question(@PathVariable int id) 
-    {
+    public Optional<Question> question(@PathVariable int id) {
         return questionService.getQuestion(id);
     }
 
-    @GetMapping("/questions")
-    public List<Question> questions() 
-    {
+    @GetMapping("/questions/")
+    public List<Question> questions() {
         return questionService.getQuestions();
     }
 
     @PostMapping("/question/")
-    public Question question(@RequestBody Question text) 
-    {
+    public Question question(@RequestBody Question text) {
         return questionService.postQuestion(text);
     }
 
     @DeleteMapping("/question/{id}")
-    public void deleteQuestion(@PathVariable int id) 
-    {
+    public void deleteQuestion(@PathVariable int id) {
         questionService.deleteQuestion(id);
     }
 
     @PutMapping("/question/{id}")
-    public Question putQuestion(@PathVariable int id, @RequestBody String text) 
-    {
+    public Question putQuestion(@PathVariable int id, @RequestBody String text) {
         return questionService.putQuestion(id, text);
     }
 }
